@@ -14,6 +14,9 @@
 		EFD216971C32A204007386BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFD216951C32A204007386BC /* LaunchScreen.storyboard */; };
 		EFD216A21C32A204007386BC /* GettingStarted_AppleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD216A11C32A204007386BC /* GettingStarted_AppleTests.swift */; };
 		EFD216AD1C32A204007386BC /* GettingStarted_AppleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD216AC1C32A204007386BC /* GettingStarted_AppleUITests.swift */; };
+		EFD216BB1C32D85E007386BC /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD216BA1C32D85E007386BC /* RatingControl.swift */; };
+		EFD216C21C32E885007386BC /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD216C11C32E885007386BC /* Meal.swift */; };
+		EFD216C31C32E885007386BC /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD216C11C32E885007386BC /* Meal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,8 @@
 		EFD216A81C32A204007386BC /* GettingStarted_AppleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GettingStarted_AppleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFD216AC1C32A204007386BC /* GettingStarted_AppleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStarted_AppleUITests.swift; sourceTree = "<group>"; };
 		EFD216AE1C32A204007386BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFD216BA1C32D85E007386BC /* RatingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
+		EFD216C11C32E885007386BC /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +102,10 @@
 		EFD2168B1C32A204007386BC /* GettingStarted_Apple */ = {
 			isa = PBXGroup;
 			children = (
+				EFD216C11C32E885007386BC /* Meal.swift */,
 				EFD2168C1C32A204007386BC /* AppDelegate.swift */,
 				EFD2168E1C32A204007386BC /* ViewController.swift */,
+				EFD216BA1C32D85E007386BC /* RatingControl.swift */,
 				EFD216901C32A204007386BC /* Main.storyboard */,
 				EFD216931C32A204007386BC /* Assets.xcassets */,
 				EFD216951C32A204007386BC /* LaunchScreen.storyboard */,
@@ -256,7 +263,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFD216C21C32E885007386BC /* Meal.swift in Sources */,
 				EFD2168F1C32A204007386BC /* ViewController.swift in Sources */,
+				EFD216BB1C32D85E007386BC /* RatingControl.swift in Sources */,
 				EFD2168D1C32A204007386BC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFD216C31C32E885007386BC /* Meal.swift in Sources */,
 				EFD216A21C32A204007386BC /* GettingStarted_AppleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
