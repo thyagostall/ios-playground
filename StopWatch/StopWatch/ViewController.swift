@@ -52,7 +52,7 @@ class ViewController: UIViewController {
         pauseButton.enabled = false
         rewindButton.enabled = false
         
-        start()        
+        start()
     }
     
     func start() {
