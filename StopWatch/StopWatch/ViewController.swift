@@ -8,10 +8,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
     // MARK: Properties
-    @IBOutlet var timerLabel: UILabel!
+    private let HOUR_COLUMN = 0;
+    private let MINUTE_COLUMN = 1;
+    private let SECOND_COLUMN = 2;
+    
+    @IBOutlet var pickerView: UIPickerView!
     
     @IBOutlet var playButton: UIBarButtonItem!
     @IBOutlet var pauseButton: UIBarButtonItem!
@@ -24,63 +28,48 @@ class ViewController: UIViewController {
     var hours = 0
     
     // MARK: Actions
-    @IBAction func start(sender: UIBarButtonItem) {
-        start()
-    }
-    
-    @IBAction func pause(sender: UIBarButtonItem) {
-        timer.invalidate()
-        update()
+    @IBAction func start(sender: UIBarButtonItem?) {
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "tick", userInfo: nil, repeats: true)
         
-        playButton.enabled = true
-        
-        pauseButton.enabled = false
+        playButton.enabled = false
+        pauseButton.enabled = true
         rewindButton.enabled = true
     }
     
-    @IBAction func reset(sender: UIBarButtonItem) {
+    @IBAction func pause(sender: UIBarButtonItem?) {
         timer.invalidate()
-        reset()
+        
+        playButton.enabled = true
+        pauseButton.enabled = false
+        rewindButton.enabled = true
+        
+        update()
+    }
+    
+    @IBAction func reset(sender: UIBarButtonItem?) {
+        timer.invalidate()
+
+        seconds = 0
+        minutes = 0
+        hours = 0
+        
+        playButton.enabled = true
+        pauseButton.enabled = false
+        rewindButton.enabled = false
+        
         update()
     }
     
     // MARK: ViewController
     override func viewDidLoad() {
         super.viewDidLoad()
-        playButton.enabled = true
+
+        reset(nil)
         
-        pauseButton.enabled = false
-        rewindButton.enabled = false
-        
-        start()
-    }
-    
-    func start() {
-        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "tick", userInfo: nil, repeats: true)
-        
-        playButton.enabled = false
-        
-        pauseButton.enabled = true
-        rewindButton.enabled = true
-    }
-    
-    func tick() {
-        increase()
         update()
     }
     
-    func reset() {
-        seconds = 0
-        minutes = 0
-        hours = 0
-        
-        playButton.enabled = true
-        
-        pauseButton.enabled = false
-        rewindButton.enabled = false
-    }
-    
-    func increase() {
+    func tick() {
         seconds++
         if seconds == 60 {
             seconds = 0
@@ -90,13 +79,35 @@ class ViewController: UIViewController {
             minutes = 0
             hours++
         }
+        
+        update()
     }
     
     func update() {
         let formatter = NSNumberFormatter()
         formatter.minimumIntegerDigits = 2
         
-        timerLabel.text = "\(formatter.stringFromNumber(hours)!):\(formatter.stringFromNumber(minutes)!):\(formatter.stringFromNumber(seconds)!)"
+        pickerView.selectRow(hours, inComponent: HOUR_COLUMN, animated: true)
+        pickerView.selectRow(minutes, inComponent: MINUTE_COLUMN, animated: true)
+        pickerView.selectRow(seconds, inComponent: SECOND_COLUMN, animated: true)
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if component == HOUR_COLUMN {
+            return 100
+        } else {
+            return 60
+        }
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        let formatter = NSNumberFormatter()
+        formatter.minimumIntegerDigits = 2
+        return formatter.stringFromNumber(row)
+    }
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 3
     }
 
 }

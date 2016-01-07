@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xa3-KI-0dT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DWS-q4-OTi">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="24U-PU-UTo">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="507" width="600" height="44"/>
                                 <items>
                                     <barButtonItem systemItem="play" id="s0n-go-pjk">
                                         <connections>
@@ -33,58 +33,133 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="AhK-gr-Xup"/>
-                                    <barButtonItem systemItem="rewind" id="vYs-WW-OXA">
+                                    <barButtonItem systemItem="stop" id="vYs-WW-OXA">
                                         <connections>
                                             <action selector="reset:" destination="BYZ-38-t0r" id="4yF-C7-eSv"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gVl-U7-utL">
-                                <rect key="frame" x="200.5" y="266.5" width="200.5" height="67"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="56"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LWz-3h-gjb">
+                                <rect key="frame" x="140" y="192" width="320" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="BuQ-FX-dQg"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="SoS-YJ-Qmj"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="24U-PU-UTo" secondAttribute="trailing" constant="-20" id="I7X-eN-gBY"/>
                             <constraint firstItem="24U-PU-UTo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="Oak-mN-VRE"/>
+                            <constraint firstItem="LWz-3h-gjb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dZE-Wu-zyE"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="24U-PU-UTo" secondAttribute="bottom" id="etQ-9K-0Gg"/>
-                            <constraint firstItem="gVl-U7-utL" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="iRq-lS-zO0"/>
-                            <constraint firstItem="gVl-U7-utL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xPL-I4-QVW"/>
+                            <constraint firstItem="LWz-3h-gjb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="mms-ul-SUy"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Stopwatch" id="1M6-dS-9SR"/>
+                    <tabBarItem key="tabBarItem" title="Stopwatch" id="DGh-Fj-iMg"/>
+                    <navigationItem key="navigationItem" id="1M6-dS-9SR">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="E5H-jI-dIf">
+                            <rect key="frame" x="221" y="7" width="159" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Stopwatch"/>
+                                <segment title="Timer"/>
+                            </segments>
+                        </segmentedControl>
+                    </navigationItem>
                     <connections>
                         <outlet property="pauseButton" destination="CuC-oe-4Vw" id="0az-FI-Cv7"/>
+                        <outlet property="pickerView" destination="LWz-3h-gjb" id="F1O-kp-hHt"/>
                         <outlet property="playButton" destination="s0n-go-pjk" id="bqS-Px-ufH"/>
                         <outlet property="rewindButton" destination="vYs-WW-OXA" id="i7M-1g-5Os"/>
-                        <outlet property="timerLabel" destination="gVl-U7-utL" id="bn1-cO-ZcK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1512" y="537"/>
+            <point key="canvasLocation" x="1206" y="1099"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="zed-GL-PDS">
+        <!--Countdown-->
+        <scene sceneID="Oix-aP-7b3">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xa3-KI-0dT" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qu8-Ae-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                <viewController id="sVW-F1-svL" customClass="CountdownTimerViewController" customModule="StopWatch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Idz-k6-joR"/>
+                        <viewControllerLayoutGuide type="bottom" id="kFp-2H-GPd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="32K-1K-VZH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="58r-7D-F2s">
+                                <rect key="frame" x="140" y="192" width="320" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="sVW-F1-svL" id="pWw-K0-ANR"/>
+                                    <outlet property="delegate" destination="sVW-F1-svL" id="VFW-31-ACu"/>
+                                </connections>
+                            </pickerView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kwX-KZ-N7v">
+                                <rect key="frame" x="0.0" y="507" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem title="Start" id="oU7-cL-8S7">
+                                        <connections>
+                                            <action selector="start:" destination="sVW-F1-svL" id="qdk-Sp-8aL"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="l8x-1C-Pxd"/>
+                                    <barButtonItem title="Stop" id="PbB-gv-mKb">
+                                        <connections>
+                                            <action selector="stop:" destination="sVW-F1-svL" id="lHG-SZ-ThO"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="PEq-er-LLD"/>
+                                    <barButtonItem title="Reset" id="t95-tt-wko">
+                                        <connections>
+                                            <action selector="reset:" destination="sVW-F1-svL" id="FLv-Ot-r1I"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="kwX-KZ-N7v" secondAttribute="trailing" constant="-20" id="Ums-xz-9Po"/>
+                            <constraint firstItem="58r-7D-F2s" firstAttribute="centerY" secondItem="32K-1K-VZH" secondAttribute="centerY" id="XVG-wT-j1f"/>
+                            <constraint firstItem="kFp-2H-GPd" firstAttribute="top" secondItem="kwX-KZ-N7v" secondAttribute="bottom" id="aXr-tw-lNg"/>
+                            <constraint firstItem="58r-7D-F2s" firstAttribute="centerX" secondItem="32K-1K-VZH" secondAttribute="centerX" id="ask-Wv-dBB"/>
+                            <constraint firstItem="kwX-KZ-N7v" firstAttribute="leading" secondItem="32K-1K-VZH" secondAttribute="leadingMargin" constant="-20" id="mDb-pg-APZ"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Countdown" id="Tko-ZT-xFf"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="iih-6W-6lX"/>
+                        <outlet property="resetButton" destination="t95-tt-wko" id="Uxh-Dl-IWj"/>
+                        <outlet property="startButton" destination="oU7-cL-8S7" id="F4Q-Xp-b95"/>
+                        <outlet property="stopButton" destination="PbB-gv-mKb" id="ugV-Zv-hVU"/>
+                        <outlet property="timePicker" destination="58r-7D-F2s" id="lsF-4h-Kfl"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5Ta-UB-dMX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Beu-gW-e5d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="700" y="537"/>
+            <point key="canvasLocation" x="1206" y="1850"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="POQ-DZ-P5w">
+            <objects>
+                <tabBarController id="DWS-q4-OTi" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="4yx-Zg-hAB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="sVW-F1-svL" kind="relationship" relationship="viewControllers" id="1MJ-Ar-aM0"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Ovn-BA-AX8"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BO3-lZ-gnA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="390" y="1529"/>
         </scene>
     </scenes>
 </document>

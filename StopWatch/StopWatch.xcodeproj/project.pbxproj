@@ -14,6 +14,7 @@
 		EF47613B1C3BD4F40052BB0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF4761391C3BD4F40052BB0F /* LaunchScreen.storyboard */; };
 		EF4761461C3BD4F40052BB0F /* StopWatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4761451C3BD4F40052BB0F /* StopWatchTests.swift */; };
 		EF4761511C3BD4F40052BB0F /* StopWatchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4761501C3BD4F40052BB0F /* StopWatchUITests.swift */; };
+		EFC6DFCC1C3ED6C50085BDF1 /* CountdownTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC6DFCB1C3ED6C50085BDF1 /* CountdownTimerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		EF47614C1C3BD4F40052BB0F /* StopWatchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StopWatchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF4761501C3BD4F40052BB0F /* StopWatchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchUITests.swift; sourceTree = "<group>"; };
 		EF4761521C3BD4F40052BB0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFC6DFCB1C3ED6C50085BDF1 /* CountdownTimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownTimerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				EF4761301C3BD4F40052BB0F /* AppDelegate.swift */,
 				EF4761321C3BD4F40052BB0F /* ViewController.swift */,
 				EF4761341C3BD4F40052BB0F /* Main.storyboard */,
+				EFC6DFCB1C3ED6C50085BDF1 /* CountdownTimerViewController.swift */,
 				EF4761371C3BD4F40052BB0F /* Assets.xcassets */,
 				EF4761391C3BD4F40052BB0F /* LaunchScreen.storyboard */,
 				EF47613C1C3BD4F40052BB0F /* Info.plist */,
@@ -258,6 +261,7 @@
 			files = (
 				EF4761331C3BD4F40052BB0F /* ViewController.swift in Sources */,
 				EF4761311C3BD4F40052BB0F /* AppDelegate.swift in Sources */,
+				EFC6DFCC1C3ED6C50085BDF1 /* CountdownTimerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +488,7 @@
 				EF4761571C3BD4F40052BB0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EF4761581C3BD4F40052BB0F /* Build configuration list for PBXNativeTarget "StopWatchTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +497,7 @@
 				EF47615A1C3BD4F40052BB0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EF47615B1C3BD4F40052BB0F /* Build configuration list for PBXNativeTarget "StopWatchUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +506,7 @@
 				EF47615D1C3BD4F40052BB0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
