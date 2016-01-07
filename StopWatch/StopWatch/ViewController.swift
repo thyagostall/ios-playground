@@ -21,7 +21,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     @IBOutlet var pauseButton: UIBarButtonItem!
     @IBOutlet var rewindButton: UIBarButtonItem!
 
-    var timer: NSTimer!
+    var timer: NSTimer?
 
     var seconds = 0
     var minutes = 0
@@ -37,7 +37,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     }
     
     @IBAction func pause(sender: UIBarButtonItem?) {
-        timer.invalidate()
+        timer?.invalidate()
         
         playButton.enabled = true
         pauseButton.enabled = false
@@ -47,7 +47,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     }
     
     @IBAction func reset(sender: UIBarButtonItem?) {
-        timer.invalidate()
+        timer?.invalidate()
 
         seconds = 0
         minutes = 0

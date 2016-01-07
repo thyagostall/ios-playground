@@ -21,19 +21,19 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="24U-PU-UTo">
                                 <rect key="frame" x="0.0" y="507" width="600" height="44"/>
                                 <items>
-                                    <barButtonItem systemItem="play" id="s0n-go-pjk">
+                                    <barButtonItem title="Start" id="s0n-go-pjk">
                                         <connections>
                                             <action selector="start:" destination="BYZ-38-t0r" id="D74-9A-xuP"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="GaD-0a-ZLf"/>
-                                    <barButtonItem systemItem="pause" id="CuC-oe-4Vw">
+                                    <barButtonItem title="Stop" id="CuC-oe-4Vw">
                                         <connections>
                                             <action selector="pause:" destination="BYZ-38-t0r" id="OZU-vZ-UUA"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="AhK-gr-Xup"/>
-                                    <barButtonItem systemItem="stop" id="vYs-WW-OXA">
+                                    <barButtonItem title="Reset" id="vYs-WW-OXA">
                                         <connections>
                                             <action selector="reset:" destination="BYZ-38-t0r" id="4yF-C7-eSv"/>
                                         </connections>
@@ -57,7 +57,7 @@
                             <constraint firstItem="LWz-3h-gjb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="mms-ul-SUy"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Stopwatch" id="DGh-Fj-iMg"/>
+                    <tabBarItem key="tabBarItem" title="Stopwatch" image="up" id="DGh-Fj-iMg"/>
                     <navigationItem key="navigationItem" id="1M6-dS-9SR">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="E5H-jI-dIf">
@@ -131,7 +131,7 @@
                             <constraint firstItem="kwX-KZ-N7v" firstAttribute="leading" secondItem="32K-1K-VZH" secondAttribute="leadingMargin" constant="-20" id="mDb-pg-APZ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Countdown" id="Tko-ZT-xFf"/>
+                    <tabBarItem key="tabBarItem" title="Countdown" image="down" id="Tko-ZT-xFf"/>
                     <connections>
                         <outlet property="resetButton" destination="t95-tt-wko" id="Uxh-Dl-IWj"/>
                         <outlet property="startButton" destination="oU7-cL-8S7" id="F4Q-Xp-b95"/>
@@ -162,4 +162,8 @@
             <point key="canvasLocation" x="390" y="1529"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="down" width="30" height="30"/>
+        <image name="up" width="30" height="30"/>
+    </resources>
 </document>
