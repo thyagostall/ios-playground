@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EF4761311C3BD4F40052BB0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4761301C3BD4F40052BB0F /* AppDelegate.swift */; };
-		EF4761331C3BD4F40052BB0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4761321C3BD4F40052BB0F /* ViewController.swift */; };
+		EF4761331C3BD4F40052BB0F /* StopwatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4761321C3BD4F40052BB0F /* StopwatchViewController.swift */; };
 		EF4761361C3BD4F40052BB0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF4761341C3BD4F40052BB0F /* Main.storyboard */; };
 		EF47613B1C3BD4F40052BB0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF4761391C3BD4F40052BB0F /* LaunchScreen.storyboard */; };
 		EF4761461C3BD4F40052BB0F /* StopWatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4761451C3BD4F40052BB0F /* StopWatchTests.swift */; };
@@ -37,7 +37,7 @@
 /* Begin PBXFileReference section */
 		EF47612D1C3BD4F40052BB0F /* StopWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StopWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF4761301C3BD4F40052BB0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EF4761321C3BD4F40052BB0F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EF4761321C3BD4F40052BB0F /* StopwatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchViewController.swift; sourceTree = "<group>"; };
 		EF4761351C3BD4F40052BB0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EF47613A1C3BD4F40052BB0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EF47613C1C3BD4F40052BB0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -101,7 +101,7 @@
 			children = (
 				EFC6DFCF1C3EF6170085BDF1 /* Assets.xcassets */,
 				EF4761301C3BD4F40052BB0F /* AppDelegate.swift */,
-				EF4761321C3BD4F40052BB0F /* ViewController.swift */,
+				EF4761321C3BD4F40052BB0F /* StopwatchViewController.swift */,
 				EF4761341C3BD4F40052BB0F /* Main.storyboard */,
 				EFC6DFCB1C3ED6C50085BDF1 /* CountdownTimerViewController.swift */,
 				EF4761391C3BD4F40052BB0F /* LaunchScreen.storyboard */,
@@ -259,7 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF4761331C3BD4F40052BB0F /* ViewController.swift in Sources */,
+				EF4761331C3BD4F40052BB0F /* StopwatchViewController.swift in Sources */,
 				EF4761311C3BD4F40052BB0F /* AppDelegate.swift in Sources */,
 				EFC6DFCC1C3ED6C50085BDF1 /* CountdownTimerViewController.swift in Sources */,
 			);

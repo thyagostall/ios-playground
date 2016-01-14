@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class StopwatchViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
     // MARK: Properties
     private let HOUR_COLUMN = 0;
