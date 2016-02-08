@@ -63,32 +63,23 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="SdF-oY-2vC"/>
-                                <exclude reference="YLh-KA-hO2"/>
-                                <exclude reference="hL1-b2-3is"/>
-                                <exclude reference="k6I-Hd-KoN"/>
                                 <exclude reference="KQ1-2b-H5S"/>
                                 <exclude reference="NTO-rV-NXX"/>
                                 <exclude reference="OfC-eT-9O4"/>
                                 <exclude reference="rxl-SS-Osu"/>
+                                <exclude reference="SdF-oY-2vC"/>
+                                <exclude reference="YLh-KA-hO2"/>
                                 <exclude reference="b3y-eq-ul6"/>
                                 <exclude reference="eLp-LL-FSu"/>
                                 <exclude reference="ixc-CI-Azr"/>
                                 <exclude reference="nGZ-H3-DYJ"/>
                                 <exclude reference="vwX-62-6tO"/>
+                                <exclude reference="hL1-b2-3is"/>
+                                <exclude reference="k6I-Hd-KoN"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact-widthClass=regular">
                             <mask key="constraints">
-                                <exclude reference="5HF-iP-V4O"/>
-                                <exclude reference="65f-rD-fPN"/>
-                                <include reference="SdF-oY-2vC"/>
-                                <include reference="YLh-KA-hO2"/>
-                                <exclude reference="eg2-KA-CNw"/>
-                                <exclude reference="jmq-qt-cBe"/>
-                                <exclude reference="TpF-ZH-hrk"/>
-                                <include reference="hL1-b2-3is"/>
-                                <include reference="k6I-Hd-KoN"/>
                                 <exclude reference="AM6-fb-tlO"/>
                                 <exclude reference="Iaq-1X-VcS"/>
                                 <include reference="KQ1-2b-H5S"/>
@@ -96,6 +87,12 @@
                                 <include reference="OfC-eT-9O4"/>
                                 <exclude reference="nTG-Gd-LRF"/>
                                 <include reference="rxl-SS-Osu"/>
+                                <exclude reference="5HF-iP-V4O"/>
+                                <exclude reference="65f-rD-fPN"/>
+                                <include reference="SdF-oY-2vC"/>
+                                <include reference="YLh-KA-hO2"/>
+                                <exclude reference="eg2-KA-CNw"/>
+                                <exclude reference="jmq-qt-cBe"/>
                                 <exclude reference="8ZB-gK-MYp"/>
                                 <exclude reference="FhB-O6-5t4"/>
                                 <exclude reference="YDl-Wd-wB5"/>
@@ -105,6 +102,9 @@
                                 <include reference="ixc-CI-Azr"/>
                                 <include reference="nGZ-H3-DYJ"/>
                                 <include reference="vwX-62-6tO"/>
+                                <exclude reference="TpF-ZH-hrk"/>
+                                <include reference="hL1-b2-3is"/>
+                                <include reference="k6I-Hd-KoN"/>
                             </mask>
                         </variation>
                     </view>
@@ -121,6 +121,10 @@
         <scene sceneID="hRx-Ea-h0K">
             <objects>
                 <viewController id="JYJ-tD-ZT6" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rsz-Ut-Wug"/>
+                        <viewControllerLayoutGuide type="bottom" id="Cc5-2p-Hx1"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="g7M-zM-geg">
                         <rect key="frame" x="0.0" y="0.0" width="580" height="193.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
