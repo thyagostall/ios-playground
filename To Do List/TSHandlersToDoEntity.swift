@@ -10,5 +10,5 @@ import Foundation
 import CoreData
 
 protocol TSHandlersToDoEntity {
-    func receiveToDoEntity(incomingMOC: NSManagedObjectContext)
+    func receiveToDoEntity(incomingToDoEntity: ToDoEntity)
 }

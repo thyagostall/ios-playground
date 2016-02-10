@@ -9,6 +9,10 @@
 import UIKit
 
 class MyUITableViewCell: UITableViewCell {
+    
+    @IBOutlet var toDoTitleLabel: UILabel!
+    @IBOutlet var toDoDueDateLabel: UILabel!
+    var entity: ToDoEntity!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,6 +23,16 @@ class MyUITableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setInternalFields(entity: ToDoEntity) {
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .ShortStyle
+        formatter.timeStyle = .ShortStyle
+        
+        self.toDoTitleLabel.text = entity.toDoTitle
+        self.toDoDueDateLabel.text = formatter.stringFromDate(entity.toDoDueDate!)
+        self.entity = entity
     }
 
 }

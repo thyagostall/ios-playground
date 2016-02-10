@@ -9,9 +9,14 @@
 import UIKit
 import CoreData
 
-class MyUIViewController: UIViewController, TSHandlersMOC {
+class MyUIViewController: UIViewController, TSHandlersMOC, TSHandlersToDoEntity {
     
     var managedObjectContext: NSManagedObjectContext!
+    var localToDoEntity: ToDoEntity!
+    
+    @IBOutlet var titleField: UITextField!
+    @IBOutlet var detailsField: UITextView!
+    @IBOutlet var dueDateField: UIDatePicker!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +32,22 @@ class MyUIViewController: UIViewController, TSHandlersMOC {
         self.managedObjectContext = incoming
     }
 
+    func receiveToDoEntity(incomingToDoEntity: ToDoEntity) {
+        self.localToDoEntity = incomingToDoEntity
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.titleField.text = self.localToDoEntity.toDoTitle
+        self.detailsField.text = self.localToDoEntity.toDoDetails
+        
+        if let date = self.localToDoEntity.toDoDueDate {
+            self.dueDateField.date = date
+        }
+    }
+    
+    @IBAction func titleFieldChanged(sender: UITextField) {
+    
+    }
 
 }
 

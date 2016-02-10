@@ -9,92 +9,83 @@
 import UIKit
 import CoreData
 
-class MyUITableViewController: UITableViewController, TSHandlersMOC {
+class MyUITableViewController: UITableViewController, TSHandlersMOC, NSFetchedResultsControllerDelegate {
     
     var managedObjectContext: NSManagedObjectContext!
+    var resultsController: NSFetchedResultsController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        initializeNSFetchedResultsControllerDelegate()
+    }
+    
+    func initializeNSFetchedResultsControllerDelegate() {
+        let fetchRequest = NSFetchRequest()
+        fetchRequest.entity = NSEntityDescription.entityForName("ToDoEntity", inManagedObjectContext: self.managedObjectContext)
+        fetchRequest.predicate = NSPredicate(format: "TRUEPREDICATE")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "toDoTitle", ascending: true)]
+        
+        self.resultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        self.resultsController.delegate = self
+        
+        try! self.resultsController.performFetch()
     }
     
     func receiveMOC(incoming: NSManagedObjectContext) {
         self.managedObjectContext = incoming
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: - Table view data source
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.resultsController.sections![section].numberOfObjects
     }
-
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let item = self.resultsController.sections![indexPath.section].objects![indexPath.row] as! ToDoEntity
 
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCellWithIdentifier("MyUITableViewCell", forIndexPath: indexPath) as! MyUITableViewCell
+        cell.setInternalFields(item)
         return cell
     }
-    */
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let child = segue.destinationViewController as! TSHandlersMOC
-        child.receiveMOC(self.managedObjectContext)
+        let child = segue.destinationViewController
+        (child as! TSHandlersMOC).receiveMOC(self.managedObjectContext)
+        
+        let item = NSEntityDescription.insertNewObjectForEntityForName("ToDoEntity", inManagedObjectContext: self.managedObjectContext) as! ToDoEntity
+        (child as! TSHandlersToDoEntity).receiveToDoEntity(item)
+    }
+    
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        self.tableView.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        self.tableView.endUpdates()
+    }
+    
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        switch (type) {
+        case .Insert:
+            self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+            break
+        case .Delete:
+            self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+            break
+        case .Update:
+            let cell = self.tableView.cellForRowAtIndexPath(indexPath!) as! MyUITableViewCell
+            let item = controller.objectAtIndexPath(indexPath!) as! ToDoEntity
+            cell.setInternalFields(item)
+            break
+        case .Move:
+            self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+            self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+            break
+        }
     }
 
 }
