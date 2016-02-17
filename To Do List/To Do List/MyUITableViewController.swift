@@ -23,7 +23,7 @@ class MyUITableViewController: UITableViewController, TSHandlersMOC, NSFetchedRe
         let fetchRequest = NSFetchRequest()
         fetchRequest.entity = NSEntityDescription.entityForName("ToDoEntity", inManagedObjectContext: self.managedObjectContext)
         fetchRequest.predicate = NSPredicate(format: "TRUEPREDICATE")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "toDoTitle", ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         
         self.resultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         self.resultsController.delegate = self
@@ -51,12 +51,21 @@ class MyUITableViewController: UITableViewController, TSHandlersMOC, NSFetchedRe
         cell.setInternalFields(item)
         return cell
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("ShowDetail", sender: tableView.cellForRowAtIndexPath(indexPath))
+    }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let child = segue.destinationViewController
         (child as! TSHandlersMOC).receiveMOC(self.managedObjectContext)
         
-        let item = NSEntityDescription.insertNewObjectForEntityForName("ToDoEntity", inManagedObjectContext: self.managedObjectContext) as! ToDoEntity
+        var item: ToDoEntity
+        if (sender is UIBarButtonItem) {
+            item = NSEntityDescription.insertNewObjectForEntityForName("ToDoEntity", inManagedObjectContext: self.managedObjectContext) as! ToDoEntity
+        } else {
+            item = (sender as! MyUITableViewCell).entity!
+        }
         (child as! TSHandlersToDoEntity).receiveToDoEntity(item)
     }
     
@@ -88,4 +97,7 @@ class MyUITableViewController: UITableViewController, TSHandlersMOC, NSFetchedRe
         }
     }
 
+    @IBAction func addButton(sender: UIBarButtonItem) {
+        performSegueWithIdentifier("ShowDetail", sender: sender)
+    }
 }

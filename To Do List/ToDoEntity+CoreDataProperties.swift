@@ -14,8 +14,8 @@ import CoreData
 
 extension ToDoEntity {
 
-    @NSManaged var toDoTitle: String?
-    @NSManaged var toDoDetails: String?
-    @NSManaged var toDoDueDate: NSDate?
+    @NSManaged var title: String?
+    @NSManaged var priority: String?
+    @NSManaged var customer: String?
 
 }

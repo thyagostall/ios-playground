@@ -30,8 +30,9 @@ class MyUITableViewCell: UITableViewCell {
         formatter.dateStyle = .ShortStyle
         formatter.timeStyle = .ShortStyle
         
-        self.toDoTitleLabel.text = entity.toDoTitle
-        self.toDoDueDateLabel.text = formatter.stringFromDate(entity.toDoDueDate!)
+        self.toDoTitleLabel.text = entity.title
+        self.toDoDueDateLabel.text = entity.customer
+        
         self.entity = entity
     }
 

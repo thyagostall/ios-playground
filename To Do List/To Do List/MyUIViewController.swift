@@ -14,9 +14,11 @@ class MyUIViewController: UIViewController, TSHandlersMOC, TSHandlersToDoEntity 
     var managedObjectContext: NSManagedObjectContext!
     var localToDoEntity: ToDoEntity!
     
+    var wasDeleted: Bool = false
+    
     @IBOutlet var titleField: UITextField!
-    @IBOutlet var detailsField: UITextView!
-    @IBOutlet var dueDateField: UIDatePicker!
+    @IBOutlet var priority: UISegmentedControl!
+    @IBOutlet var customer: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,17 +39,57 @@ class MyUIViewController: UIViewController, TSHandlersMOC, TSHandlersToDoEntity 
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.titleField.text = self.localToDoEntity.toDoTitle
-        self.detailsField.text = self.localToDoEntity.toDoDetails
+        self.wasDeleted = false
         
-        if let date = self.localToDoEntity.toDoDueDate {
-            self.dueDateField.date = date
+        titleField.text = localToDoEntity.title
+        if let priorityItem = localToDoEntity.priority {
+            priority.selectedSegmentIndex = Int(priorityItem)!
+        }
+        customer.text = localToDoEntity.customer
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        if (wasDeleted) {
+            return
+        }
+        
+        localToDoEntity.title = titleField.text
+        localToDoEntity.priority = String(priority.selectedSegmentIndex)
+        localToDoEntity.customer = customer.text
+        
+        saveData()
+    }
+    
+    func saveData() {
+        do {
+            try managedObjectContext.save()
+//            print("Saved")
+        } catch {
+//            print("Error")
         }
     }
     
-    @IBAction func titleFieldChanged(sender: UITextField) {
+    func textViewDidEndEditing(textView: UITextView) {
+//        self.localToDoEntity.toDoDetails = self.detailsField.text
+//        self.saveData()
+    }
     
+    @IBAction func titleFieldChanged(sender: UITextField) {
+//        self.localToDoEntity.toDoTitle = sender.text
+//        self.saveData()
     }
 
+    @IBAction func dateChanged(sender: UIDatePicker) {
+//        self.localToDoEntity.toDoDueDate = sender.date
+//        self.saveData()
+    }
+    
+    @IBAction func deleteItem(sender: UIBarButtonItem) {
+        wasDeleted = true
+        managedObjectContext.deleteObject(self.localToDoEntity)
+        saveData()
+        navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
 }
 
